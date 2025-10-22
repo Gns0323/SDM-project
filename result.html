@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>결과 페이지</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container result">
+    <h1>당신의 결과는...</h1>
+    <div id="resultBox"></div>
+    <button onclick="location.href='survey.html'">다시 진단하기</button>
+  </div>
+
+  <script>
+    const result = localStorage.getItem('dialysisResult');
+    document.getElementById('resultBox').innerHTML = result === 'PD'
+      ? '<h2 style="color:#673AB7;">복막투석 선호자</h2>'
+      : '<h2 style="color:#1976D2;">혈액투석 선호자</h2>';
+  </script>
+</body>
+</html>
