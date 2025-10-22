@@ -8,34 +8,60 @@
 </head>
 <body>
   <div class="container">
-    <h1>설문에 응답해주세요</h1>
+    <h1>당신에게 맞는 투석 방법은?</h1>
+    <p>아래 문항을 읽고 본인에게 해당하는 정도를 선택해주세요.</p>
+
     <form id="surveyForm">
       <ol>
-        <li>나는 나의 뼈, 관절과 신경을 보호하고 싶다. <br>
-          <input type="radio" name="q1" value="PD">동의함 
-          <input type="radio" name="q1" value="HD">비동의
+        <li>나는 나의 뼈, 관절과 신경을 보호하고 싶다.<br>
+          <label><input type="radio" name="q1" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q1" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q1" value="3"> 보통이다</label>
+          <label><input type="radio" name="q1" value="4"> 그렇다</label>
+          <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
         </li>
-        <li>나는 심장에 부담을 주지 않는 치료를 받고 싶다. <br>
-          <input type="radio" name="q2" value="PD">동의함 
-          <input type="radio" name="q2" value="HD">비동의
+
+        <li>나는 심장에 부담을 주지 않는 치료를 받고 싶다.<br>
+          <label><input type="radio" name="q2" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q2" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q2" value="3"> 보통이다</label>
+          <label><input type="radio" name="q2" value="4"> 그렇다</label>
+          <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
         </li>
-        <li>나는 가능한 한 높은 삶의 질을 유지하고 싶다. <br>
-          <input type="radio" name="q3" value="HD">동의함 
-          <input type="radio" name="q3" value="PD">비동의
+
+        <li>나는 가능한 한 높은 삶의 질을 유지하고 싶다.<br>
+          <label><input type="radio" name="q3" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q3" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q3" value="3"> 보통이다</label>
+          <label><input type="radio" name="q3" value="4"> 그렇다</label>
+          <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
         </li>
-        <li>나는 내 가족과 주변사람들에게 부담을 덜 주는 치료를 선택하고 싶다. <br>
-          <input type="radio" name="q4" value="PD">동의함 
-          <input type="radio" name="q4" value="HD">비동의
+
+        <li>나는 가족이나 주변 사람에게 부담을 덜 주는 치료를 선택하고 싶다.<br>
+          <label><input type="radio" name="q4" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q4" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q4" value="3"> 보통이다</label>
+          <label><input type="radio" name="q4" value="4"> 그렇다</label>
+          <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
         </li>
-        <li>나는 나의 의지대로 살고 싶다. <br>
-          <input type="radio" name="q5" value="PD">동의함 
-          <input type="radio" name="q5" value="HD">비동의
+
+        <li>나는 나의 의지대로 생활하고 싶다.<br>
+          <label><input type="radio" name="q5" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q5" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q5" value="3"> 보통이다</label>
+          <label><input type="radio" name="q5" value="4"> 그렇다</label>
+          <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
         </li>
-        <li>나는 하루 정도는 투석 부담 없이 지내고 싶다. <br>
-          <input type="radio" name="q6" value="PD">동의함 
-          <input type="radio" name="q6" value="HD">비동의
+
+        <li>나는 하루 정도는 투석 부담 없이 지내고 싶다.<br>
+          <label><input type="radio" name="q6" value="1" required> 전혀 그렇지 않다</label>
+          <label><input type="radio" name="q6" value="2"> 그렇지 않다</label>
+          <label><input type="radio" name="q6" value="3"> 보통이다</label>
+          <label><input type="radio" name="q6" value="4"> 그렇다</label>
+          <label><input type="radio" name="q6" value="5"> 매우 그렇다</label>
         </li>
       </ol>
+
       <button type="submit">결과 보기</button>
     </form>
   </div>
