@@ -3,14 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>결과 페이지</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/result.css"> <!-- ✅ 설문 전용 -->
 </head>
 <body>
   <div class="container result">
+
+    <div class="logo-bar">
+      <div class="logo-left">
+        <img src="assets/logo/logo_ksn.png" alt="대한신장학회" class="logo" />
+      </div>
+      <div class="logo-right">
+        <img src="assets/logo/logo_snubh.png" alt="분당서울대학교병원" class="logo" />
+        <img src="assets/logo/logo_aihc.png" alt="의료인공지능센터" class="logo" />
+        <img src="assets/logo/logo_sickgpt.png" alt="SickGPT" class="logo" />
+      </div>
+    </div>
+
     <h1>당신의 결과는...</h1>
     <div id="resultBox"></div>
-    <button onclick="location.href='survey.html'">다시 진단하기</button>
-  </div>
+      <div class="cluster-info">
+        <h3 id="clusterName">신중한 조율가<br>(균형추구형)</h3>
+        <p id="messageDirection">
+          “균형 잡힌 계획형”<br>
+          환자와 의료진이 함께 계획을 세워가는 것이 잘 맞습니다.<br>
+          부담이 적고 일상에 영향을 덜 주는 방식의 치료가 적합해요.<br>
+          의사와의 충분한 상의로 투석방법을 선택하세요.<br>
+        </p>
+        </div>
+      <div class="button-group">
+        <button onclick="location.href='survey.html'">다시 진단하기</button>
+        <button onclick="location.href='survey.html'">관련 컨텐츠</button>
+        <button onclick="location.href='survey.html'">닥토리에게 물어보기</button>
+      </div>
+    </div>
 
   <script>
     const result = localStorage.getItem('dialysisResult');

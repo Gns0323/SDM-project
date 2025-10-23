@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>자가 진단 테스트</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/survey.css"> <!-- ✅ 설문 전용 -->
+  <script src="assets/js/script.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>당신에게 맞는 투석 방법은?</h1>
-    <p>아래 문항을 읽고 본인에게 해당하는 정도를 선택해주세요.</p>
+
+    <div class="logo-bar">
+      <div class="logo-left">
+        <img src="assets/logo/logo_ksn.png" alt="대한신장학회" class="logo" />
+      </div>
+      <div class="logo-right">
+        <img src="assets/logo/logo_snubh.png" alt="분당서울대학교병원" class="logo" />
+        <img src="assets/logo/logo_aihc.png" alt="의료인공지능센터" class="logo" />
+        <img src="assets/logo/logo_sickgpt.png" alt="SickGPT" class="logo" />
+      </div>
+    </div>
+
+    <p class="subtitle">아래 문항을 읽고 본인에게 해당하는 정도를 선택해주세요.</p>
 
     <form id="surveyForm">
       <ol>
@@ -53,16 +65,7 @@
           <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
         </li>
 
-        <li>나는 하루 정도는 투석 부담 없이 지내고 싶다.<br>
-          <label><input type="radio" name="q6" value="1" required> 전혀 그렇지 않다</label>
-          <label><input type="radio" name="q6" value="2"> 그렇지 않다</label>
-          <label><input type="radio" name="q6" value="3"> 보통이다</label>
-          <label><input type="radio" name="q6" value="4"> 그렇다</label>
-          <label><input type="radio" name="q6" value="5"> 매우 그렇다</label>
-        </li>
-      </ol>
-
-      <button type="submit">결과 보기</button>
+      <button type="submit">다음</button>
     </form>
   </div>
 </body>
