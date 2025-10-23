@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/css/result.css"> <!-- ✅ 설문 전용 -->
 </head>
 <body>
-  <div class="container result">
+  <div class="container result-page">
 
     <div class="logo-bar">
       <div class="logo-left">
@@ -20,23 +20,25 @@
       </div>
     </div>
 
-    <h1>당신의 결과는...</h1>
-    <div id="resultBox"></div>
-      <div class="cluster-info">
-        <h3 id="clusterName">신중한 조율가<br>(균형추구형)</h3>
-        <p id="messageDirection">
-          “균형 잡힌 계획형”<br>
-          환자와 의료진이 함께 계획을 세워가는 것이 잘 맞습니다.<br>
-          부담이 적고 일상에 영향을 덜 주는 방식의 치료가 적합해요.<br>
-          의사와의 충분한 상의로 투석방법을 선택하세요.<br>
-        </p>
-        </div>
-      <div class="button-group">
-        <button onclick="location.href='survey.html'">다시 진단하기</button>
-        <button onclick="location.href='survey.html'">관련 컨텐츠</button>
-        <button onclick="location.href='survey.html'">닥토리에게 물어보기</button>
-      </div>
+    <h1 class="result-title">당신의 결과는...</h1>
+    <div class="cluster-info">
+      <div id="resultBox"></div>
+      <h3 class="clusterName">신중한 조율가<br>(균형추구형)</h3>
+      <p class="messageDirection1">
+        “균형 잡힌 계획형”
+      </p>
+      <p class="messageDirection2">
+        환자와 의료진이 함께 계획을 세워가는 것이 잘 맞습니다.<br>
+        부담이 적고 일상에 영향을 덜 주는 방식의 치료가 적합해요.<br>
+        의사와의 충분한 상의로 투석방법을 선택하세요.
+      </p>
     </div>
+    <div class="button-group">
+      <button onclick="location.href='survey.html'">다시 진단하기</button>
+      <button onclick="location.href='survey.html'">관련 컨텐츠</button>
+      <button onclick="location.href='survey.html'">닥토리에게 물어보기</button>
+    </div>
+  </div>
 
   <script>
     const result = localStorage.getItem('dialysisResult');
