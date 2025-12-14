@@ -10,91 +10,268 @@
 <body>
   <div class="container survey-page">
 
-    <!-- 로고 영역 -->
-    <div class="logo-bar">
-      <div class="logo-left">
-        <img src="assets/logo/logo_ksn.png" alt="대한신장학회" class="logo" />
-      </div>
-      <div class="logo-right">
-        <img src="assets/logo/logo_snubh.png" alt="분당서울대학교병원" class="logo" />
-        <img src="assets/logo/logo_aihc.png" alt="의료인공지능센터" class="logo" />
-        <img src="assets/logo/logo_sickgpt.png" alt="SickGPT" class="logo" />
-      </div>
-    </div>
-
     <!-- 안내문 -->
     <p class="survey-subtitle">아래 문항을 읽고 본인에게 해당하는 정도를 선택해주세요.</p>
 
     <!-- 설문 폼 -->
     <form id="surveyForm">
-      <ol>
-        <li>
-          <div class="question-wrapper">
-            <span class="question-text">나는 나의 뼈, 관절과 신경을 보호하고 싶다.</span>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="q1" value="1" required> 전혀 그렇지 않다</label>
-            <label><input type="radio" name="q1" value="2"> 그렇지 않다</label>
-            <label><input type="radio" name="q1" value="3"> 보통이다</label>
-            <label><input type="radio" name="q1" value="4"> 그렇다</label>
-            <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
-          </div>
-        </li>
+      <div class="survey-page" data-page="1">
+        <ol>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 나의 뼈, 관절과 신경을 보호하고 싶다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q1" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="3"> 보통이다</label>
+              <label><input type="radio" name="q1" value="4"> 그렇다</label>
+              <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
 
-        <li>
-          <div class="question-wrapper">
-            <span class="question-text">나는 심장에 부담을 주지 않는 치료를 받고 싶다.</span>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="q2" value="1" required> 전혀 그렇지 않다</label>
-            <label><input type="radio" name="q2" value="2"> 그렇지 않다</label>
-            <label><input type="radio" name="q2" value="3"> 보통이다</label>
-            <label><input type="radio" name="q2" value="4"> 그렇다</label>
-            <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
-          </div>
-        </li>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 심장에 부담을 주지 않는 치료를 받고 싶다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q2" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="3"> 보통이다</label>
+              <label><input type="radio" name="q2" value="4"> 그렇다</label>
+              <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
 
-        <li>
-          <div class="question-wrapper">
-            <span class="question-text">나는 가능한 한 높은 삶의 질을 유지하고 싶다.</span>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="q3" value="1" required> 전혀 그렇지 않다</label>
-            <label><input type="radio" name="q3" value="2"> 그렇지 않다</label>
-            <label><input type="radio" name="q3" value="3"> 보통이다</label>
-            <label><input type="radio" name="q3" value="4"> 그렇다</label>
-            <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
-          </div>
-        </li>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 가능한 한 높은 삶의 질을 유지하고 싶다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q3" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="3"> 보통이다</label>
+              <label><input type="radio" name="q3" value="4"> 그렇다</label>
+              <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
 
-        <li>
-          <div class="question-wrapper">
-            <span class="question-text">나는 가족이나 주변 사람에게 부담을 덜 주는 치료를 선택하고 싶다.</span>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="q4" value="1" required> 전혀 그렇지 않다</label>
-            <label><input type="radio" name="q4" value="2"> 그렇지 않다</label>
-            <label><input type="radio" name="q4" value="3"> 보통이다</label>
-            <label><input type="radio" name="q4" value="4"> 그렇다</label>
-            <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
-          </div>
-        </li>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 가족이나 주변 사람에게 부담을 덜 주는 치료를 선택하고 싶다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q4" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="3"> 보통이다</label>
+              <label><input type="radio" name="q4" value="4"> 그렇다</label>
+              <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
 
-        <li>
-          <div class="question-wrapper">
-            <span class="question-text">나는 나의 의지대로 생활하고 싶다.</span>
-          </div>
-          <div class="options">
-            <label><input type="radio" name="q5" value="1" required> 전혀 그렇지 않다</label>
-            <label><input type="radio" name="q5" value="2"> 그렇지 않다</label>
-            <label><input type="radio" name="q5" value="3"> 보통이다</label>
-            <label><input type="radio" name="q5" value="4"> 그렇다</label>
-            <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
-          </div>
-        </li>
-      </ol>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 나의 의지대로 생활하고 싶다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q5" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="3"> 보통이다</label>
+              <label><input type="radio" name="q5" value="4"> 그렇다</label>
+              <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
 
-      <button type="submit">다음</button>
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 하루 정도는 투석 부담 없이 지내고 싶다 (나는 매일 투석해도 괜찮다)</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q6" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="3"> 보통이다</label>
+              <label><input type="radio" name="q6" value="4"> 그렇다</label>
+              <label><input type="radio" name="q6" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+        </ol>
+        
+        <div class="button-group2">
+          <button type="button" class="next-btn">다음</button>
+        </div>
+      </div>
+
+      <div class="survey-page" data-page="2">
+        <ol start="7">
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 일상에 계획을 세우고 행동한다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q1" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="3"> 보통이다</label>
+              <label><input type="radio" name="q1" value="4"> 그렇다</label>
+              <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 규칙적인 생활을 한다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q2" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="3"> 보통이다</label>
+              <label><input type="radio" name="q2" value="4"> 그렇다</label>
+              <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 운동을 즐긴다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q3" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="3"> 보통이다</label>
+              <label><input type="radio" name="q3" value="4"> 그렇다</label>
+              <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 내가 스스로 나를 돌볼 수 있고 일상생활을 조절할 수 있다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q4" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="3"> 보통이다</label>
+              <label><input type="radio" name="q4" value="4"> 그렇다</label>
+              <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 여행을 좋아하고, 내 삶에 중요한 부분이다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q5" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="3"> 보통이다</label>
+              <label><input type="radio" name="q5" value="4"> 그렇다</label>
+              <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 학교에 가거나 직장에 다녀야 한다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q6" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="3"> 보통이다</label>
+              <label><input type="radio" name="q6" value="4"> 그렇다</label>
+              <label><input type="radio" name="q6" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+        </ol>
+        <div class="button-group">
+          <button type="button" class="prev-btn">이전</button>
+          <button type="button" class="next-btn">다음</button>
+        </div>
+      </div>
+
+      <div class="survey-page" data-page="3">
+        <ol class="13">
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 투석용품을 내 집에 들여놓고 싶지 않다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q1" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q1" value="3"> 보통이다</label>
+              <label><input type="radio" name="q1" value="4"> 그렇다</label>
+              <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 새로운 변화를 받아들이는 것이 매우 어렵다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q2" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q2" value="3"> 보통이다</label>
+              <label><input type="radio" name="q2" value="4"> 그렇다</label>
+              <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 병원에서의 투석이 더 편하다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q3" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q3" value="3"> 보통이다</label>
+              <label><input type="radio" name="q3" value="4"> 그렇다</label>
+              <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 남의 눈을 많이 의식하는 편이다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q4" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q4" value="3"> 보통이다</label>
+              <label><input type="radio" name="q4" value="4"> 그렇다</label>
+              <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 주삿바늘을 무서워한다. (나는 주삿바늘을 잘 견디는 편이다)</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q5" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q5" value="3"> 보통이다</label>
+              <label><input type="radio" name="q5" value="4"> 그렇다</label>
+              <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+
+          <li>
+            <div class="question-wrapper">
+              <span class="question-text">나는 치료를 도와줄 보호자가 꼭 필요하다.</span>
+            </div>
+            <div class="options">
+              <label><input type="radio" name="q6" value="1" required> 전혀 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="2"> 그렇지 않다</label>
+              <label><input type="radio" name="q6" value="3"> 보통이다</label>
+              <label><input type="radio" name="q6" value="4"> 그렇다</label>
+              <label><input type="radio" name="q6" value="5"> 매우 그렇다</label>
+            </div>
+          </li>
+        </ol>
+        <div class="button-group"> 
+          <button type="button" class="prev-btn">이전</button>
+          <button type="button" class="submit">결과 보기</button>
+        </div>
+      </div>
     </form>
   </div>
 </body>
