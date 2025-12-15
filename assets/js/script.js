@@ -1,43 +1,103 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const pages = document.querySelectorAll(".survey-page[data-page]");
+  const pages = Array.from(document.querySelectorAll(".survey-page[data-page]"));
+  const form = document.getElementById("surveyForm");
+  if (!form || pages.length === 0) return;
+
   let currentPage = 0;
+
+  // 특정 페이지가 완료(모든 라디오 그룹 체크)되었는지
+  function isPageCompleted(pageEl) {
+    const radios = Array.from(pageEl.querySelectorAll('input[type="radio"]'));
+    if (radios.length === 0) return true;
+
+    const names = [...new Set(radios.map(r => r.name).filter(Boolean))];
+    if (names.length === 0) return true;
+
+    return names.every(name =>
+      pageEl.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`)
+    );
+  }
+
+  // 해당 페이지의 next / submit 버튼 상태 업데이트
+  function updateButtonsForPage(pageEl) {
+    const completed = isPageCompleted(pageEl);
+
+    const nextBtn = pageEl.querySelector(".next-btn");
+    if (nextBtn) nextBtn.classList.toggle("active", completed);
+
+    const submitBtn = pageEl.querySelector(".submit");
+    if (submitBtn) submitBtn.classList.toggle("active", completed);
+  }
+
+  // 점 표시(1페이지에만 있어도 OK)
+  function updateDots() {
+    const dots = document.querySelectorAll(".page-indicator .dot");
+    dots.forEach((dot, idx) => dot.classList.toggle("active", idx === currentPage));
+  }
 
   function showPage(index) {
     pages.forEach((page, i) => {
       page.style.display = i === index ? "block" : "none";
     });
+    currentPage = index;
+    updateButtonsForPage(pages[currentPage]);
+    updateDots();
   }
 
+  // 라디오 변경 시: "그 라디오가 속한 페이지"만 갱신 (이게 핵심)
+  form.addEventListener("change", (e) => {
+    if (!e.target.matches('input[type="radio"]')) return;
+    const pageEl = e.target.closest(".survey-page[data-page]");
+    if (!pageEl) return;
+    updateButtonsForPage(pageEl);
+  });
+
+  // 다음 버튼 클릭
   document.querySelectorAll(".next-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const form = document.getElementById("surveyForm");
-      if (!form.checkValidity()) {
-        form.reportValidity();
+
+      const pageEl = btn.closest(".survey-page[data-page]");
+      if (!pageEl) return;
+
+      if (!isPageCompleted(pageEl)) {
+        alert("모든 문항에 답변을 선택해주세요.");
         return;
       }
+
       if (currentPage < pages.length - 1) {
-        currentPage++;
-        showPage(currentPage);
+        showPage(currentPage + 1);
       }
     });
   });
 
+  // 이전 버튼 클릭
   document.querySelectorAll(".prev-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      if (currentPage > 0) {
-        currentPage--;
-        showPage(currentPage);
-      }
+      if (currentPage > 0) showPage(currentPage - 1);
     });
   });
 
-  showPage(0);
+  // 페이지 결과보기 버튼 클릭 → submit 실행
+  document.querySelectorAll(".submit").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-  const form = document.getElementById("surveyForm");
-  if (!form) return;
+      const pageEl = btn.closest(".survey-page[data-page]");
+      if (!pageEl) return;
 
+      if (!isPageCompleted(pageEl)) {
+        alert("모든 문항에 답변을 선택해주세요.");
+        return;
+      }
+
+      // submit 이벤트로 넘기기
+      form.dispatchEvent(new Event("submit", { cancelable: true }));
+    });
+  });
+
+  // ===== 기존 submit 로직 그대로 =====
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -97,4 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("clusterId", closestCluster);
     window.location.href = "result.html";
   });
+
+  // 초기 페이지 표시
+  showPage(0);
 });
