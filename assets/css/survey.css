@@ -1,118 +1,234 @@
-.survey-page ol {
-  list-style: none;
-  counter-reset: item;
-  padding: 0;
+/* ===== 목표 이미지(2번) 레이아웃 패치 ===== */
+
+.container.survey-page{
+  max-width: 1100px;
   margin: 0 auto;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;      
-  gap: 25px;
+  padding: 24px 20px 50px;
 }
 
-.survey-page li {
-  counter-increment: item;
+/* 상단 중앙 타이틀 */
+.survey-top{
   display: flex;
-  flex-direction: column;  
   align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px 0 14px;
+}
+
+.survey-logo{
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.survey-title{
   text-align: center;
-  width: 100%;
+  line-height: 1.2;
 }
 
-.survey-page .question-wrapper {
-  display: flex;
+.survey-title strong{
+  display: block;
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.survey-title p{
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+/* 민트 테두리 박스 */
+.likert-box{
+  max-width: 980px;
+  margin: 14px auto 0;
+  border: 1px solid #cfe7ef;
+  border-radius: 10px;
+  padding: 16px 18px 6px;
+  background: #fff;
+}
+
+/* 헤더(전혀~매우) */
+.likert-header-row{
+  display: grid;
+  grid-template-columns: 360px repeat(5, 1fr);
+  align-items: end;
+  padding: 6px 0 12px;
+  border-bottom: 1px solid #e6f1f5;
+  margin-bottom: 6px;
+}
+
+.hcell{
+  text-align: center;
+  font-size: 12px;
+  color: #7a7a7a;
+  white-space: nowrap;
+}
+
+.h-spacer{}
+
+/* 문항 표 형태 */
+.likert-box ol{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.likert-box li{
+  display: grid;
+  grid-template-columns: 360px repeat(5, 1fr);
   align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eef3f6;
+}
+
+.likert-box li:last-child{
+  border-bottom: none;
+}
+
+.question-wrapper{
+  padding-right: 18px;
+}
+
+.question-text{
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 옵션 칸 배치 */
+.options{
+  display: contents;
+}
+
+.options label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 0; /* 문항 옆 텍스트 제거(헤더만 보이게) */
+}
+
+/* 라디오 원형(목표 이미지) */
+.options input[type="radio"]{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #d6dee3;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.options input[type="radio"]:checked{
+  border-color: #4aa7a1;
+}
+
+.options input[type="radio"]:checked::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #4aa7a1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 하단 네비(이전/점/다음) */
+.survey-bottom{
+  max-width: 980px;
+  margin: 16px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prev-btn,
+.next-btn{
+  min-width: 140px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.prev-btn{
+  background: #f3f5f7;
+  color: #9aa4aa;
+  cursor: pointer;
+}
+
+.prev-btn:hover{
+  background: #e9edf0;
+}
+
+/* 다음 버튼: 비활성 기본 */
+.next-btn{
+  background: #e0e4e7;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.next-btn.active{
+  background: #4aa7a1;
+  cursor: pointer;
+}
+
+.next-btn.active:hover{
+  filter: brightness(0.95);
+}
+
+/* 점 인디케이터 */
+.page-indicator{
+  display: flex;
   justify-content: center;
   gap: 8px;
-  flex-wrap: wrap;
-  text-align: center;
 }
 
-.survey-page .question-wrapper::before {
-  content: counter(item) ".";
-  font-weight: 600;
-  font-size: 17px;
-  color: #222;
+.page-indicator .dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d6dde2;
 }
 
-.survey-page li::before {
-  display: none;
+.page-indicator .dot.active{
+  background: #4aa7a1;
 }
 
-.survey-page .question-text {
-  display: inline-block;
-  font-size: 17px;
-  font-weight: 500;
-  color: #222;
-  line-height: 1.6;
-  max-width: 700px;
-}
-
-.survey-page .options {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.survey-page .button-group2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;               
-  margin: 30px;
-  width: auto;               
-}
-
-.survey-page .button-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;                 
-  margin: 30px auto;
-  width: auto;               
-}
-
-/* 버튼 기본 스타일 */
-.survey-page .button-group button {
-  display: inline-flex;      
-  align-items: center;
-  justify-content: center;
-  background-color: #1a73e8;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  padding: 14px 48px;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin: 0;                 
-}
-
-.survey-page .button-group button:hover {
-  background-color: #155ab6;
-}
-
-.survey-subtitle {
-  text-align: center;
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 35px;
-  line-height: 1.7;
-}
-
-@media (max-width: 1024px) {
-  .logo-bar {
-    flex-direction: column;
-    gap: 20px;
+/* 반응형: 모바일에서는 헤더 숨기고 아래로 스택 */
+@media (max-width: 860px){
+  .likert-header-row{
+    display: none;
   }
 
-  .logo-right {
-    justify-content: center;
-    flex-wrap: wrap;
+  .likert-box li{
+    grid-template-columns: 1fr;
   }
 
-  .logo {
-    height: 38px;
+  .options{
+    display: flex;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  .options label{
+    font-size: 12px;
+    color: #6b6b6b;
+    gap: 8px;
+  }
+
+  .survey-bottom{
+    gap: 10px;
+  }
+
+  .prev-btn, .next-btn{
+    min-width: 120px;
   }
 }

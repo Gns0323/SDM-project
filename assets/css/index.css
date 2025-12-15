@@ -1,14 +1,13 @@
 .container.cover{
-  min-height: 900px;
-  max-height: 900px;
-  padding: 40px 90px;        /* 위 여백 조금 줄이기 */
+  max-height: none;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .cover-intro{
   max-width: 760px;
-  margin: 55px auto 0;       /* 스샷처럼 위쪽 */
+  margin: 10% auto 0;
   text-align: center;
 }
 
@@ -19,21 +18,24 @@
 }
 
 .title-icon{
-  height: 26px;
+  height: 60px;
+  gap: 5px;
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
 .cover-intro h1{
   margin: 0;
-  font-size: 28px;           /* 스샷은 28보다 작음 */
+  font-size: 36px;
   color: #111;
   letter-spacing: -0.2px;
 }
 
 .cover-intro .subtitle{
-  margin: 30px 0 30px;
-  font-size: 14px;
+  margin: 7% 0 7%;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.7;
   color: #555;
 }
@@ -42,29 +44,38 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 11px 40px;
+  padding: 14px 40px;
   border: none;
   border-radius: 10px;
-  background: #4aa7a1;       /* 스샷 느낌 민트 */
+  background: #4aa7a1;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1;
   cursor: pointer;
 }
 
-.intro-btn:hover{ filter: brightness(0.95); }
-
-.intro-btn .arrow{
-  font-size: 18px;
-  line-height: 1;
-  transform: translateY(-1px);
+.intro-btn:hover{
+  filter: brightness(0.95);
 }
 
-.logo-bar{
-  margin-top: auto;          /* 아래로 밀기(핵심) */
-  display: flex;
-  justify-content: flex-end; /* 오른쪽 */
+.intro-btn .arrow{
+  display: inline-flex;
   align-items: center;
-  padding-top: 18px;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  background: url(../logo/header_arr.png) center center no-repeat;
+  background-size: contain;
+  transform: translateY(1px);
+}
+
+
+.logo-bar{
+  margin: 10% 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 0;
   margin-bottom: 0;
 }
 
@@ -76,11 +87,17 @@
 
 .logo-right img{
   display: block;
-  height: 35px;
+  height: 30px;
   width: auto;
   object-fit: contain;
 }
 
 .logo-right img[alt*="분당서울대학교병원"]{
-  height: 25px;
+  height: 20px;
+}
+
+@media (max-width: 900px){
+  .container.cover{
+    padding: 30px 22px;
+  }
 }

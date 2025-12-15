@@ -1,41 +1,304 @@
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f7f9fc;
+body { margin: 0; padding: 0; }
+
+#headerWrap{
+  z-index: 1000;
+  position: relative;
+  padding-top: 40px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+#headerWrap .ksn-topbar{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background: #0b2d55;
+  color: #fff;
+  font-size: 14px;
+}
+
+#headerWrap .ksn-topbar-inner{
+  max-width: 1200px;
+  height: 40px;
+  margin: 0 3%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+#headerWrap .ksn-top-left{
+  display: flex;
+  align-items: stretch;
+}
+
+#headerWrap .ksn-top-left a{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 40px;
+  font-family: 'S-CoreDream-3Light', sans-serif;
+}
+
+#headerWrap .ksn-top-left a:nth-child(1){background:#5aaad7;}
+#headerWrap .ksn-top-left a:nth-child(2){background:#4f8fc7;}
+#headerWrap .ksn-top-left a:nth-child(3){background:#45b3ab;}
+#headerWrap .ksn-top-left a:nth-child(4){background:#6f74b8;}
+
+#headerWrap .ksn-top-left a::after{
+  display: inline-block;
+  width: 20px;
+  height: 40px;
+  vertical-align: top;
+  content: "";
+  background: url(../logo/header_arr.png) center right no-repeat;
+}
+
+#headerWrap .ksn-top-left a:hover{
+  filter: brightness(1.03);
+}
+
+#headerWrap .ksn-top-right{
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+#headerWrap .ksn-top-right a{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'S-CoreDream-5Medium', sans-serif;
+}
+
+#headerWrap .ksn-top-right a + a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:1px;
+  height:14px;
+  background: rgba(255,255,255,.35);
+  transform: translateY(-50%);
+}
+
+#headerWrap .ksn-top-right .ksn-40th{
+  display: inline-flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+#headerWrap .ksn-top-right .ksn-40th img{
+  display: block;
+  width: auto;
+}
+
+#headerWrap .ksn-mainbar{
+  height: 80px;
+  background: #fff;
+}
+
+#headerWrap .ksn-mainbar-inner{
+  max-width: 1200px;
+  height: 80px;
+  margin: 0 3%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#headerWrap .ksn-logo{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-width: 280px;
+}
+
+#headerWrap .ksn-logo a{
+  display: inline-flex;
+  align-items: center;
+}
+
+#headerWrap .ksn-logo img{
+  display: block;
+  width: auto;
+}
+
+#headerWrap .ksn-nav{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#headerWrap .ksn-gnb{
+  list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 56px;
 }
 
-button {
-  background-color: #1a73e8;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  padding: 14px 48px;
-  cursor: pointer;
-  transition: background 0.2s;
+#headerWrap .ksn-gnb > li{
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-button:hover { background-color: #155ab6; }
 
-h1{
-  font-size: 28px;
-  font-weight: 700;
-  color: #0d47a1;
+#headerWrap .ksn-gnb > li > a{
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 20px 0;
+  color: #000;
   text-align: center;
-  margin: 0 0 40px;
+  font-family: 'S-CoreDream-5Medium', sans-serif;
+  text-decoration: none;
 }
 
-.subtitle {
+#headerWrap .ksn-gnb > li > a:hover{ color: #0b2d55; }
+
+#headerWrap .ksn-gnb .sub{
+  list-style: none;
+  margin: 0;
+  padding: 14px 0;
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  border-radius: 10px;
+  display: none;
+  z-index: 2000;
+}
+
+#headerWrap .ksn-gnb .sub a{
+  display: block;
+  padding: 10px 16px;
   font-size: 15px;
-  color: #333;
-  line-height: 1.7;
-  text-align: center;
-  margin-bottom: 35px;
+  color: #222;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
-p.en {
-  color: #555;
-  font-style: italic;
-  font-size: 14px;
-  text-align: center;
+#headerWrap .ksn-gnb .sub a:hover{
+  background: #f5f7fb;
+  color: #0b2d55;
+}
+
+#headerWrap .ksn-gnb > li.has-sub:hover .sub{ display: block; }
+
+#headerWrap .ksn-main-right{
+  min-width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+#headerWrap .ksn-util{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+#headerWrap .ksn-util > li{
+  display: flex;
+  align-items: center;
+}
+
+#headerWrap .lang{
+  font-size: 16px;
+  color: #111;
+  text-decoration: none;
+  line-height: 1;
+}
+
+#headerWrap .lang.active{ color: #e53935; cursor: default; }
+
+#headerWrap .divider{
+  color: #c9c9c9;
+}
+
+#headerWrap .menu-btn{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 110px;
+}
+
+#headerWrap .menu-btn::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: #111;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 -6px 0 #111, 0 6px 0 #111;
+}
+
+#headerWrap .menu-icon{
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: #111 !important;
+  display: block !important;
+}
+
+#headerWrap .menu-icon::before,
+#headerWrap .menu-icon::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: #111 !important;
+}
+
+#headerWrap .menu-icon::before{ top: -6px; }
+#headerWrap .menu-icon::after{ top: 6px; }
+
+.badge sup{
+  font-size: 80%;
+  vertical-align: super;
+}
+
+@media (max-width: 900px){
+  #headerWrap .ksn-nav{ display: none; }
+  #headerWrap .ksn-logo{ min-width: auto; }
+  #headerWrap .ksn-main-right{ min-width: auto; }
+  #headerWrap .ksn-top-left a{ padding: 0 12px; font-size: 14px; }
+  #headerWrap .ksn-top-right a{ padding: 0 10px; font-size: 14px; }
 }
