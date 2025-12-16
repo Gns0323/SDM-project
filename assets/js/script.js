@@ -31,9 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 점 표시(1페이지에만 있어도 OK)
   function updateDots() {
-    const dots = document.querySelectorAll(".page-indicator .dot");
-    dots.forEach((dot, idx) => dot.classList.toggle("active", idx === currentPage));
-  }
+  const current = pages[currentPage];
+  if (!current) return;
+
+  // 현재 페이지 안에 있는 dot만 갱신
+  const dots = current.querySelectorAll(".page-indicator .dot");
+  dots.forEach((dot) => dot.classList.remove("active"));
+
+  // dot 개수는 4개로 두고, 현재 페이지 인덱스에 해당하는 dot만 활성화
+  // (페이지 1=0, 2=1, 3=2, 4=3)
+  if (dots[currentPage]) dots[currentPage].classList.add("active");
+}
+
 
   function showPage(index) {
     pages.forEach((page, i) => {
