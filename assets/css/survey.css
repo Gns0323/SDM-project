@@ -25,14 +25,14 @@
 
 .survey-title strong{
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   color: #1a1a1a;
   margin-bottom: 6px;
 }
 
 .survey-title p{
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   color: #666;
 }
 
@@ -59,7 +59,7 @@
 
 .hcell{
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   color: #7a7a7a;
   white-space: nowrap;
 }
@@ -89,7 +89,7 @@
   white-space: normal;
   word-break: keep-all;
   overflow-wrap: anywhere;
-  font-size: 20px;
+  font-size: 18px;
   color: #333;
   line-height: 1.6;
 }
@@ -138,7 +138,7 @@
 /* 하단 버튼 영역 */
 .survey-bottom{
   max-width: 83%;
-  margin: 22px auto 0;    
+  margin: 22px auto 0;
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
@@ -150,22 +150,27 @@
 .next-btn,
 .submit{
   min-width: 200px;
-  padding: 12px 18px;
+  height: 52px;               /* 높이 고정(원하면 제거 가능) */
+  padding: 0 56px;            /* 좌/우 화살표 자리 확보 (중요) */
   border-radius: 10px;
   border: none;
-  font-size: 16px;
+  font-size: 18px;
+  position: relative;         /* 가상요소 위치 기준 */
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: center;    /* 텍스트를 버튼 정중앙 고정 */
+  white-space: nowrap;
 }
 
 /* 화살표 공통 */
 .prev-btn::before,
 .next-btn::after{
   content: "";
+  position: absolute;
+  top: 50%;
   width: 14px;
   height: 14px;
+  transform: translateY(-50%);
   background: url("../logo/header_arr.png") center / contain no-repeat;
 }
 
@@ -177,7 +182,8 @@
 }
 
 .prev-btn::before{
-  transform: rotate(180deg);
+  left: 22px;                 /* ← 화살표를 더 옆으로: 숫자 키우기 */
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .prev-btn:hover{
@@ -193,6 +199,7 @@
 }
 
 .next-btn::after{
+  right: 22px;                /* → 화살표를 더 옆으로: 숫자 키우기 */
   opacity: .55;
 }
 

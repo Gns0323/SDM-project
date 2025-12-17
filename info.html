@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>설문 결과</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>정보 기입</title>
+
   <link rel="stylesheet" href="assets/css/common.css">
-  <link rel="stylesheet" href="assets/css/result.css">
-  <script src="assets/js/result.js" defer></script>
+  <link rel="stylesheet" href="assets/css/info.css">
+
+  <script src="assets/js/info.js" defer></script>
 </head>
 <body>
-    <header id="headerWrap" class="ksn-header">
-    <!-- 상단 유틸 바 -->
+  <header id="headerWrap" class="ksn-header">
     <div class="ksn-topbar">
       <div class="ksn-topbar-inner">
         <div class="ksn-top-left">
@@ -20,7 +22,6 @@
         </div>
 
         <div class="ksn-top-right">
-          <!-- KSN 40th 이미지(프로젝트에 맞게 경로 조정) -->
           <span class="ksn-40th">
             <img src="assets/logo/ksn40_header.png" alt="KSN 40th" />
           </span>
@@ -32,7 +33,6 @@
       </div>
     </div>
 
-    <!-- 메인 네비 바 -->
     <div class="ksn-mainbar">
       <div class="ksn-mainbar-inner">
         <h1 class="ksn-logo">
@@ -41,10 +41,8 @@
           </a>
         </h1>
 
-        <!-- GNB -->
         <nav class="ksn-nav" aria-label="주요 메뉴">
           <ul class="ksn-gnb">
-            <!-- 학회소개 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/about/">학회소개</a>
               <ul class="sub">
@@ -62,7 +60,6 @@
               </ul>
             </li>
 
-            <!-- 학술행사 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/?code=schedule">학술행사</a>
               <ul class="sub">
@@ -74,7 +71,6 @@
               </ul>
             </li>
 
-            <!-- 간행물 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/index.php?code=KSNnews">간행물</a>
               <ul class="sub">
@@ -90,7 +86,6 @@
               </ul>
             </li>
 
-            <!-- 회원공간 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/?code=notice">회원공간</a>
               <ul class="sub">
@@ -109,7 +104,6 @@
           </ul>
         </nav>
 
-        <!-- 우측: 언어/햄버거 -->
         <div class="ksn-main-right">
           <a class="lang active" href="https://ksn.or.kr/main.php" aria-current="page">KOR</a>
           <span class="divider" aria-hidden="true">|</span>
@@ -122,38 +116,125 @@
       </div>
     </div>
   </header>
-  <div class="container result-page">
 
-    <div class="logo-bar">
-      <div class="logo-left">
-        <img src="assets/logo/logo_ksn.png" alt="대한신장학회" class="logo" />
+  <main class="container info">
+    <div class="info-top">
+      <img class="info-logo" src="assets/logo/dahaeng.png" alt="다행" />
+      <div class="info-title">
+        <strong>검사 결과를 산출하고 있습니다</strong>
+        <p>
+          자기검진 결과를 받기 위해 최소한의 검진자 정보가 필요합니다<br>
+          입력하신 정보는 익명정보의 형태로 저장되어 통계자료로 활용됩니다
+        </p>
       </div>
-      <div class="logo-right">
-        <img src="assets/logo/logo_snubh.png" alt="분당서울대학교병원" class="logo" />
-        <img src="assets/logo/logo_aihc.png" alt="의료인공지능센터" class="logo" />
-        <img src="assets/logo/logo_sickgpt.png" alt="SickGPT" class="logo" />
+    </div>
+
+    <form id="infoForm" autocomplete="off">
+      <section class="info-card">
+        <div class="info-row">
+          <label for="phone" class="info-label">연락처</label>
+          <div class="info-field">
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="numeric"
+              placeholder="'-' 없이 전체를 입력해주세요"
+            />
+          </div>
+        </div>
+
+        <div class="info-row">
+          <label for="patientStatus" class="info-label">환자의 상태</label>
+          <div class="info-select">
+            <select id="patientStatus" name="patientStatus">
+              <option value="">선택해 주세요</option>
+              <option value="ckd_1">만성 1기</option>
+              <option value="ckd_2">만성 2기</option>
+              <option value="ckd_3">만성 3기</option>
+              <option value="ckd_4">만성 4기</option>
+              <option value="ckd_5">만성 5기</option>
+              <option value="unknown">모름</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <label for="relation" class="info-label">환자와의 관계</label>
+          <div class="info-select">
+            <select id="relation" name="relation">
+              <option value="">선택해 주세요</option>
+              <option value="self">본인</option>
+              <option value="parent">부모</option>
+              <option value="child">자식</option>
+              <option value="spouse">배우자</option>
+              <option value="acquaintance">지인</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info-row consent-row">
+          <label class="info-label">개인정보 활용 동의서</label>
+          <button
+            type="button"
+            class="consent-btn"
+            id="openConsent"
+            aria-expanded="false"
+            aria-controls="consentPanel"
+          >
+            <span class="consent-label">선택해 주세요</span>
+            <span class="consent-chev" aria-hidden="true"></span>
+          </button>
+          <input type="hidden" id="consent" name="consent" value="" />
+        </div>
+
+        <div class="consent-panel" id="consentPanel" hidden>
+          <div class="consent-panel-head">
+            <div class="consent-panel-title">개인정보 취급방침</div>
+            <button type="button" class="consent-panel-x" id="closeConsent" aria-label="닫기">×</button>
+          </div>
+
+          <div class="consent-panel-body">
+            <p class="modal-sub">제공받는 자</p>
+            <p class="modal-text">대한신장학회</p>
+
+            <p class="modal-sub">정보 수집 범위</p>
+            <p class="modal-text">휴대폰 번호</p>
+
+            <p class="modal-sub">정보 수집 및 이용 목적</p>
+            <p class="modal-text">신장 투석 자가진단 테스트 세부 진단 결과 및 정보 안내</p>
+
+            <p class="modal-sub">보유 및 이용 기간</p>
+            <p class="modal-text">
+              개인 정보는 수집 및 이용목적 달성 시까지 보유하며,<br>
+              이용 목적이 달성되면 파기하는 것을 원칙으로 한다
+            </p>
+          </div>
+
+          <div class="consent-panel-foot">
+            <label class="agree">
+              <input type="checkbox" id="agreeCheck"/>
+              <span>위 내용을 확인했고 동의합니다</span>
+            </label>
+
+            <button type="button" class="apply-btn" id="applyConsent" disabled>적용</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="info-bottom">
+        <button type="button" class="prev-btn" id="btnPrev">이전</button>
+
+        <div class="page-indicator">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot active"></span>
+        </div>
+
+        <button type="submit" class="submit" id="btnSubmit">결과보기</button>
       </div>
-    </div>
-
-    <h1 class="result-title">당신의 결과는...</h1>
-    <div class="cluster-info">
-      <div id="resultBox"></div>
-      <h3 class="clusterName"></h3>
-      <p class="messageDirection1"></p>
-      <p class="messageDirection2"></p>
-    </div>
-    <div class="button-group">
-      <button onclick="location.href='survey.html'">다시 진단하기</button>
-      <button onclick="location.href='survey.html'">관련 컨텐츠</button>
-      <!-- <button onclick="location.href='survey.html'">닥토리에게 물어보기</button> -->
-    </div>
-  </div>
-
-  <script>
-    const result = localStorage.getItem('dialysisResult');
-    document.getElementById('resultBox').innerHTML = result === 'PD'
-      ? '<h2 style="color:#673AB7;">복막투석 선호자</h2>'
-      : '<h2 style="color:#1976D2;">혈액투석 선호자</h2>';
-  </script>
+    </form>
+  </main>
 </body>
 </html>
