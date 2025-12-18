@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>설문 결과</title>
-  <link rel="stylesheet" href="assets/css/common.css">
-  <link rel="stylesheet" href="assets/css/result.css">
-  <script src="assets/js/result.js" defer></script>
+  <link rel="stylesheet" href="../assets/css/common.css" />
+  <link rel="stylesheet" href="../assets/css/result.css" />
+  <script src="../assets/js/result.js" defer></script>
 </head>
+
 <body>
-    <header id="headerWrap" class="ksn-header">
+  <header id="headerWrap" class="ksn-header">
     <!-- 상단 유틸 바 -->
     <div class="ksn-topbar">
       <div class="ksn-topbar-inner">
@@ -20,9 +22,8 @@
         </div>
 
         <div class="ksn-top-right">
-          <!-- KSN 40th 이미지(프로젝트에 맞게 경로 조정) -->
           <span class="ksn-40th">
-            <img src="assets/logo/ksn40_header.png" alt="KSN 40th" />
+            <img src="../assets/logo/ksn40_header.png" alt="KSN 40th" />
           </span>
 
           <a href="https://ksn.or.kr/">INTRO</a>
@@ -37,14 +38,12 @@
       <div class="ksn-mainbar-inner">
         <h1 class="ksn-logo">
           <a href="https://ksn.or.kr/main.php" aria-label="대한신장학회 홈">
-            <img src="assets/logo/logo_ksn.png" alt="대한신장학회" />
+            <img src="../assets/logo/logo_ksn.png" alt="대한신장학회" />
           </a>
         </h1>
 
-        <!-- GNB -->
         <nav class="ksn-nav" aria-label="주요 메뉴">
           <ul class="ksn-gnb">
-            <!-- 학회소개 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/about/">학회소개</a>
               <ul class="sub">
@@ -62,7 +61,6 @@
               </ul>
             </li>
 
-            <!-- 학술행사 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/?code=schedule">학술행사</a>
               <ul class="sub">
@@ -74,7 +72,6 @@
               </ul>
             </li>
 
-            <!-- 간행물 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/index.php?code=KSNnews">간행물</a>
               <ul class="sub">
@@ -90,7 +87,6 @@
               </ul>
             </li>
 
-            <!-- 회원공간 -->
             <li class="has-sub">
               <a href="https://ksn.or.kr/bbs/?code=notice">회원공간</a>
               <ul class="sub">
@@ -109,7 +105,6 @@
           </ul>
         </nav>
 
-        <!-- 우측: 언어/햄버거 -->
         <div class="ksn-main-right">
           <a class="lang active" href="https://ksn.or.kr/main.php" aria-current="page">KOR</a>
           <span class="divider" aria-hidden="true">|</span>
@@ -122,38 +117,34 @@
       </div>
     </div>
   </header>
-  <div class="container result-page">
 
-    <div class="logo-bar">
-      <div class="logo-left">
-        <img src="assets/logo/logo_ksn.png" alt="대한신장학회" class="logo" />
-      </div>
-      <div class="logo-right">
-        <img src="assets/logo/logo_snubh.png" alt="분당서울대학교병원" class="logo" />
-        <img src="assets/logo/logo_aihc.png" alt="의료인공지능센터" class="logo" />
-        <img src="assets/logo/logo_sickgpt.png" alt="SickGPT" class="logo" />
+  <main class="container result-page">
+    <div class="result-top">
+      <img class="result-logo" src="../assets/logo/dahaeng.png" alt="다행" />
+      <div class="result-top-title">
+        <p><strong id="clusterHeadline">결과를 불러오는 중입니다.</strong></p>
       </div>
     </div>
-
-    <h1 class="result-title">당신의 결과는...</h1>
     <div class="cluster-info">
       <div id="resultBox"></div>
-      <h3 class="clusterName"></h3>
-      <p class="messageDirection1"></p>
-      <p class="messageDirection2"></p>
+      <h3 class="clusterName" style="display:none;"></h3>
+      <p class="messageDirection1" style="display:none;"></p>
+      <p class="messageDirection2" style="display:none;"></p>
     </div>
-    <div class="button-group">
-      <button onclick="location.href='survey.html'">다시 진단하기</button>
-      <button onclick="location.href='survey.html'">관련 컨텐츠</button>
-      <!-- <button onclick="location.href='survey.html'">닥토리에게 물어보기</button> -->
-    </div>
-  </div>
 
-  <script>
-    const result = localStorage.getItem('dialysisResult');
-    document.getElementById('resultBox').innerHTML = result === 'PD'
-      ? '<h2 style="color:#673AB7;">복막투석 선호자</h2>'
-      : '<h2 style="color:#1976D2;">혈액투석 선호자</h2>';
-  </script>
+    <div class="button-group">
+      <button type="button" onclick="location.href='survey.html'">다시 검사하기</button>
+      <button type="button" onclick="location.href='survey.html'">관련 컨텐츠 보기</button>
+      <button type="button" onclick="location.href='survey.html'">상담 캘린더 연결하기</button>
+    </div>
+
+    <div class="logo-bar">
+      <div class="logo-right">
+        <img src="../assets/logo/logo_snubh.png" alt="분당서울대학교병원" />
+        <img src="../assets/logo/logo_aihc.png" alt="의료인공지능센터" />
+        <img src="../assets/logo/logo_sickgpt.png" alt="SickGPT" />
+      </div>
+    </div>
+  </main>
 </body>
 </html>

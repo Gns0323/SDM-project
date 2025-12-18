@@ -1,3 +1,5 @@
+// assets/js/script.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const pages = Array.from(document.querySelectorAll(".survey-page[data-page]"));
   const form = document.getElementById("surveyForm");
@@ -5,20 +7,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPage = 0;
 
-  // 특정 페이지가 완료(모든 라디오 그룹 체크)되었는지
+  function initQuestionNumbering() {
+    pages.forEach((pageEl) => {
+      const ol = pageEl.querySelector(".likert-box ol");
+      if (!ol) return;
+
+      const startAttr = parseInt(ol.getAttribute("start") || "1", 10);
+      const qStart = Number.isFinite(startAttr) ? Math.max(0, startAttr - 1) : 0;
+      ol.style.setProperty("--q-start", String(qStart));
+    });
+  }
+
   function isPageCompleted(pageEl) {
     const radios = Array.from(pageEl.querySelectorAll('input[type="radio"]'));
     if (radios.length === 0) return true;
 
-    const names = [...new Set(radios.map(r => r.name).filter(Boolean))];
+    const names = [...new Set(radios.map((r) => r.name).filter(Boolean))];
     if (names.length === 0) return true;
 
-    return names.every(name =>
+    return names.every((name) =>
       pageEl.querySelector(`input[type="radio"][name="${CSS.escape(name)}"]:checked`)
     );
   }
 
-  // 해당 페이지의 next / submit 버튼 상태 업데이트
   function updateButtonsForPage(pageEl) {
     const completed = isPageCompleted(pageEl);
 
@@ -29,31 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (submitBtn) submitBtn.classList.toggle("active", completed);
   }
 
-  // 점 표시(1페이지에만 있어도 OK)
   function updateDots() {
-  const current = pages[currentPage];
-  if (!current) return;
+    const pageEl = pages[currentPage];
+    if (!pageEl) return;
 
-  // 현재 페이지 안에 있는 dot만 갱신
-  const dots = current.querySelectorAll(".page-indicator .dot");
-  dots.forEach((dot) => dot.classList.remove("active"));
+    const dots = pageEl.querySelectorAll(".page-indicator .dot");
+    if (!dots || dots.length === 0) return;
 
-  // dot 개수는 4개로 두고, 현재 페이지 인덱스에 해당하는 dot만 활성화
-  // (페이지 1=0, 2=1, 3=2, 4=3)
-  if (dots[currentPage]) dots[currentPage].classList.add("active");
-}
-
+    dots.forEach((dot) => dot.classList.remove("active"));
+    if (dots[currentPage]) dots[currentPage].classList.add("active");
+  }
 
   function showPage(index) {
     pages.forEach((page, i) => {
       page.style.display = i === index ? "block" : "none";
     });
+
     currentPage = index;
+
     updateButtonsForPage(pages[currentPage]);
     updateDots();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // 라디오 변경 시: "그 라디오가 속한 페이지"만 갱신 (이게 핵심)
   form.addEventListener("change", (e) => {
     if (!e.target.matches('input[type="radio"]')) return;
     const pageEl = e.target.closest(".survey-page[data-page]");
@@ -61,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateButtonsForPage(pageEl);
   });
 
-  // 다음 버튼 클릭
   document.querySelectorAll(".next-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -74,13 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (currentPage < pages.length - 1) {
-        showPage(currentPage + 1);
-      }
+      if (currentPage < pages.length - 1) showPage(currentPage + 1);
     });
   });
 
-  // 이전 버튼 클릭
   document.querySelectorAll(".prev-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -88,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 페이지 결과보기 버튼 클릭 → submit 실행
   document.querySelectorAll(".submit").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -101,12 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // submit 이벤트로 넘기기
       form.dispatchEvent(new Event("submit", { cancelable: true }));
     });
   });
 
-  // ===== 기존 submit 로직 그대로 =====
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -115,21 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const data = new FormData(form);
     const answers = [];
-    let totalScore = 0;
-    let count = 0;
-
-    for (const [, value] of data.entries()) {
-      const v = parseFloat(value);
-      totalScore += v;
-      answers.push(v);
-      count++;
+    for (let i = 1; i <= 18; i++) {
+      const checked = form.querySelector(`input[type="radio"][name="q${i}"]:checked`);
+      if (!checked) {
+        alert("모든 문항에 답변을 선택해주세요.");
+        return;
+      }
+      answers.push(parseFloat(checked.value));
     }
 
-    const avg = totalScore / count;
-    const result = avg >= 3.5 ? "PD" : "HD";
-    localStorage.setItem("dialysisResult", result);
+    localStorage.setItem("sdm_answers_v1", JSON.stringify(answers));
+
+    const avg = answers.reduce((a, b) => a + b, 0) / answers.length;
+    localStorage.setItem("dialysisResult", avg >= 3.5 ? "PD" : "HD");
 
     const clusterProfiles = {
       1: [4.70, 4.67, 4.59, 4.58, 4.48, 4.26, 3.39, 3.80, 2.88, 3.92, 1.80, 1.22, 2.33, 2.70, 3.39, 2.39, 2.68, 2.36],
@@ -143,7 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function normalize(arr) {
       const min = Math.min(...arr);
       const max = Math.max(...arr);
-      return arr.map(v => (v - min) / (max - min || 1));
+      const denom = max - min || 1;
+      return arr.map((v) => (v - min) / denom);
     }
 
     const userNorm = normalize(answers);
@@ -152,21 +154,20 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const [cluster, profile] of Object.entries(clusterProfiles)) {
       const clusterNorm = normalize(profile);
       const distance = Math.sqrt(
-        clusterNorm.reduce((sum, val, idx) =>
-          sum + Math.pow((userNorm[idx] || 0) - val, 2), 0
-        )
+        clusterNorm.reduce((sum, val, idx) => {
+          const u = userNorm[idx] ?? 0;
+          return sum + Math.pow(u - val, 2);
+        }, 0)
       );
       distances[cluster] = distance;
     }
 
-    const closestCluster = Object.entries(distances).reduce((a, b) =>
-      a[1] < b[1] ? a : b
-    )[0];
+    const closestCluster = Object.entries(distances).reduce((a, b) => (a[1] < b[1] ? a : b))[0];
+    localStorage.setItem("clusterId", String(closestCluster));
 
-    localStorage.setItem("clusterId", closestCluster);
-    window.location.href = "result.html";
+    window.location.href = "info.html";
   });
 
-  // 초기 페이지 표시
+  initQuestionNumbering();
   showPage(0);
 });
